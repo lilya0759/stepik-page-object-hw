@@ -1,6 +1,7 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
 from .locators import MainPageLocators
+from .locators import CartPageLocators
 # from tests.pages.login_page import LoginPage
 
 
