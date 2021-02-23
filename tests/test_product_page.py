@@ -99,8 +99,8 @@ def test_guest_cant_see_message_about_empty_cart(browser):
 
 
 class TestUserAddToBasketFromProductPage():
-    @pytest.fixture
-    def registration_user(self, browser):
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
         page = BasePage(browser, link)
         page.open()
         page.go_to_login_page()
@@ -111,14 +111,14 @@ class TestUserAddToBasketFromProductPage():
         login_page.register_new_user(email, password)
 
     @pytest.mark.need_review
-    def test_user_can_add_product_to_basket(self, browser, registration_user):
+    def test_user_can_add_product_to_basket(self, browser):
         page = ProductPage(browser, link)
         page.open()
         page.add_product_to_basket()
         page.should_be_message_adding_to_busket()
         page.should_be_cart_product_price()
 
-    def test_user_cant_see_success_message(self, browser, registration_user):
+    def test_user_cant_see_success_message(self, browser):
         page = ProductPage(browser, link)
         page.open()
         page.should_not_be_success_message()
