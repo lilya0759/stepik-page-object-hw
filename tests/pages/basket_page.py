@@ -17,6 +17,10 @@ class BasketPage(BasePage):
         assert self.is_element_present(
             *CartPageLocators.EMPTY_MESSAGE_CART), "Нет уведомления, что корзина пуста"
 
+    def should_not_be_message_empty_cart(self):
+        assert self.is_not_element_present(
+            *CartPageLocators.EMPTY_MESSAGE_CART), "Есть уведомление, что корзина пуста"
+
     def should_not_be_title_of_product_in_empty_cart(self):
         assert self.is_not_element_present(
             *CartPageLocators.CART_TITLE), "Отображаются заголовки таблицы с товарами"

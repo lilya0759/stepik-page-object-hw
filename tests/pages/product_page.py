@@ -34,7 +34,7 @@ class ProductPage(BasePage):
         # time.sleep(10)
 
     def should_be_product_to_basket(self):
-        assert self.browser.switch_to.alert, "alert is not presented"
+        assert self.browser.switch_to.alert, "alert не отображается"
 
     def product_price_item(self):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE)
@@ -48,9 +48,9 @@ class ProductPage(BasePage):
 
         assert expected_message == actual_message, "Product has NOT been added to your basket."
 
-    def should__be_success_message(self):
-        assert not self.is_not_element_present(
-            *ProductPageLocators.MESSAGE_ADDING_TO_BUSKET), "Сообщение о добавлении товара отображается"
+    # def should__be_success_message(self):
+    #     assert not self.is_not_element_present(
+    #         *ProductPageLocators.MESSAGE_ADDING_TO_BUSKET), "Сообщение о добавлении товара отображается"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(
